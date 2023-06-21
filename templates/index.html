@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Welcome to TextUtils!</strong> Write some texts and choose the options
+  below.
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+
+<div class="container">
+  <form action="/analyze/" method="post">
+    {% csrf_token %}
+    <div class="mt-3">
+      <span class=".bg-secondary">Enter Text Here:</span>
+      <textarea
+        name="text"
+        rows="9"
+        class="form-control .bg-secondary-subtle"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="removepunc"
+        role="switch"
+        id="flexSwitchCheckDefault1"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault1"
+        >Remove Punctuation</label
+      >
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="capfirst"
+        role="switch"
+        id="flexSwitchCheckDefault2"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault2"
+        >Capitalize</label
+      >
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="newlineremove"
+        role="switch"
+        id="flexSwitchCheckDefault3"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault3"
+        >Remove New Line</label
+      >
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="spaceremove"
+        role="switch"
+        id="flexSwitchCheckDefault4"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault4"
+        >Remove Extra Space</label
+      >
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="charcount"
+        role="switch"
+        id="flexSwitchCheckDefault5"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault5"
+        >Character Count</label
+      >
+    </div>
+    <button class="mt-3 btn btn-outline-primary" type="submit">
+      Analyse Text
+    </button>
+  </form>
+</div>
+{% endblock body %}
